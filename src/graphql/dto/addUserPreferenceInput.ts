@@ -6,7 +6,7 @@ export class AddUserPreferenceInput {
     userId: number
 
     @Field({ defaultValue: false })
-    isDarKTheme: boolean
+    isDarkTheme: boolean
 
     @Field({ defaultValue: false })
     isEmailEnable: boolean

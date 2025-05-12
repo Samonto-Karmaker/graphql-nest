@@ -9,7 +9,7 @@ export class UserPreference {
     userId: number
 
     @Field()
-    isDarKTheme: boolean
+    isDarkTheme: boolean
 
     @Field()
     isEmailEnable: boolean
