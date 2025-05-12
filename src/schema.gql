@@ -5,7 +5,7 @@
 type UserPreference {
   id: Int!
   userId: Int!
-  isDarKTheme: Boolean!
+  isDarkTheme: Boolean!
   isEmailEnable: Boolean!
   isPushEnable: Boolean!
 }
@@ -25,10 +25,18 @@ type Query {
 
 type Mutation {
   createUser(user: CreateUserInput!): User!
+  addUserPreference(userPreference: AddUserPreferenceInput!): UserPreference!
 }
 
 input CreateUserInput {
   name: String!
   email: String!
   displayName: String
+}
+
+input AddUserPreferenceInput {
+  userId: Int!
+  isDarkTheme: Boolean! = false
+  isEmailEnable: Boolean! = false
+  isPushEnable: Boolean! = false
 }
