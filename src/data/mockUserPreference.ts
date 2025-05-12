@@ -1,4 +1,6 @@
-export const mockUserPreference = [
+import { UserPreference } from "../graphql/model/UserPreference"
+
+export const mockUserPreference: UserPreference[] = [
     {
         id: 1,
         userId: 1,
