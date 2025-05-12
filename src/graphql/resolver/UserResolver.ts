@@ -1,12 +1,15 @@
-import { Args, Int, Parent, Query } from "@nestjs/graphql"
+import { Args, Int, Mutation, Parent, Query } from "@nestjs/graphql"
 import { Resolver, ResolveField } from "@nestjs/graphql"
 import { User } from "../model/User"
 import { mockUsers } from "src/data/mockUsers"
 import { UserPreference } from "../model/UserPreference"
 import { mockUserPreference } from "src/data/mockUserPreference"
+import { CreateUserInput } from "../dto/createUserInput"
 
 @Resolver(() => User)
 export class UserResolver {
+    private userId = mockUsers.length + 1
+
     @Query(() => [User])
     getUsers() {
         return mockUsers
@@ -31,5 +34,18 @@ export class UserResolver {
             preference => preference.userId === user.id
         )
         return userPreference || null
+    }
+
+    @Mutation(() => User)
+    createUser(@Args("user") user: CreateUserInput) {
+        const { name, email, displayName } = user
+        const newUser: User = {
+            id: this.userId++,
+            name,
+            email,
+            displayName,
+        }
+        mockUsers.push(newUser)
+        return newUser
     }
 }
