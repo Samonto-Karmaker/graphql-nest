@@ -2,10 +2,20 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type UserPreference {
+  id: Int!
+  userId: Int!
+  isDarKTheme: Boolean!
+  isEmailEnable: Boolean!
+  isPushEnable: Boolean!
+}
+
 type User {
   id: Int!
   name: String!
+  email: String!
   displayName: String
+  preference: UserPreference
 }
 
 type Query {
